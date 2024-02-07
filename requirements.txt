@@ -7,3 +7,4 @@ notebook
 antspyx
 SimpleITK
 antspynet
+dicom2nifti
