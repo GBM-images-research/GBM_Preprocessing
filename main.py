@@ -30,13 +30,13 @@ if __name__ == "__main__":
 
     save_nifti_files(global_path, output_path)
 
-    t1 = Modal(output_path, 't1_test.nii')
-    t1c = Modal(output_path, 't1c_test.nii')
-    t2 = Modal(output_path, 't2_test.nii')
-    flair = Modal(output_path, 'flair_test.nii')
+    t1 = Preprocessing(output_path, 't1_test.nii')
+    t1c = Preprocessing(output_path, 't1c_test.nii')
+    t2 = Preprocessing(output_path, 't2_test.nii')
+    flair = Preprocessing(output_path, 'flair_test.nii')
 
     # CO REGISTRATION
-    template = t1.ex
+    template = t1.temp
 
     t1c.registration(template)
     t2.registration(template)
