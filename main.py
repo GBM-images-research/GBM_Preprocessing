@@ -48,8 +48,9 @@ if __name__ == "__main__":
 
     # Native space transformation 
     atlas = atlas_t1.temp
+    atlas.set_origin((239,-239,0))
     brats_flag = True
-    matrix = t1.coregistration(atlas,'SyN', brats_flag)
+    matrix = t1.coregistration(atlas,'Similarity', brats_flag)
 
     #Apply T1-Atlas transformation matrix to t1c, t2, flair
     t1c.apply_transformation(atlas,matrix)
@@ -60,7 +61,7 @@ if __name__ == "__main__":
     prob_brain_mask = brain_extraction(t1.reg, modality="t1", verbose=True,)
 
     # GET T1 MASK
-    brain_mask_t1 = ants.get_mask(prob_brain_mask, low_thresh=0.5)
+    brain_mask_t1 = ants.get_mask(prob_brain_mask, low_thresh=0.8)
     masked_t1 = ants.mask_image(t1.reg, brain_mask_t1)
 
     # Now we have the t1 mask, we do the same for t1c, t2 and flair

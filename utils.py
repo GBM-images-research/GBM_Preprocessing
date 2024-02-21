@@ -20,16 +20,17 @@ class Preprocessing:
 
     
     def apply_transformation(self,atlas,matrix):
-        transform_paths = [matrix['fwdtransforms'][0], matrix['fwdtransforms'][1]]
+        transform_paths = [matrix['fwdtransforms'][0]]
         self.transformed_image = ants.apply_transforms(
                 fixed=atlas,  # must be atlas
                 moving=self.reg,
                 transformlist=transform_paths,
-                interpolator='linear',  # Using nearestNeighbour to preserve intensities
+                interpolator='linear',  
                 imagetype=0,  
                 verbose=True
             )
         self.res = self.transformed_image
     def mask_image(self, brain_mask):
         self.masked = ants.mask_image(self.res, brain_mask)
+
 
