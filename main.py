@@ -13,7 +13,7 @@ from scipy.signal import correlate
 
 
 if __name__ == "__main__":
-    # LOAD PATH FILES
+    # LOAD PATH FILES.
     #MRI example dataset 
     global_path = "C:\\Users\\sarth\\OneDrive\\Escritorio\\ITBA\\Proyecto Final\\CAD\\GBM_upenn\\upenn_crudas\\UPENN-GBM-00031\\*" 
     output_path = "C:\\Users\\sarth\\OneDrive\\Escritorio\\ITBA\\Proyecto Final\\CAD\\NIFTI_ouputs"
@@ -99,7 +99,7 @@ if __name__ == "__main__":
     # axs[1].set_title('Control binarizada')
     # plt.show()
 
-    # Dice
+    # Dice.
     print(glob(global_path))
     resultado_dice = dice_coefficient(bm1_shifted, bcontrol.numpy())
     #resultado_dice = dice_coefficient(bm1.numpy(), bcontrol.numpy())
