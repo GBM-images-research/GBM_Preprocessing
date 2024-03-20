@@ -6,7 +6,7 @@ import numpy as np
 from scipy.ndimage import shift
 from scipy.signal import correlate
 
-
+#Preprocessing
 class Preprocessing:
     def __init__(self, output_path, document):
         self.path = os.path.join(output_path, document)
@@ -38,7 +38,7 @@ class Preprocessing:
     def mask_image(self, brain_mask):
         self.masked = ants.mask_image(self.res, brain_mask)
 
-
+#Saving files
 def save_nifti_files(global_path, output_path):
     for i, modality in enumerate(glob(global_path)): #we save the nifti files 
         document = ''
@@ -53,6 +53,7 @@ def save_nifti_files(global_path, output_path):
         
         dicom2nifti.dicom_series_to_nifti(modality, os.path.join(output_path, document))
 
+#Dice calculation
 def dice_coefficient(volume1, volume2):
     intersection = np.sum(volume1 * volume2)
     total_voxels = np.sum(volume1) + np.sum(volume2)
@@ -61,6 +62,7 @@ def dice_coefficient(volume1, volume2):
 
     return dice
 
+#Image shifting
 def max_correlation(control, imagen):
 
     # Calculate 3D cross-correlation 
