@@ -1,4 +1,4 @@
-# GBManalyzer
+# GBM_Preprocessing
 
 Brain preprocessing source code
 
